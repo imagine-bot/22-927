@@ -21,21 +21,31 @@ export default function DaySlider() {
         <div className="flex mb-2 items-center justify-between">
           <div>
             <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-200">
-              {marks.find((mark) => mark.value === value)?.label}
+              {marks.find((mark) => mark.value === value)?.label || `${value} days`}
             </span>
           </div>
-          <div>
-            {marks.map((mark) => (
-              <button
-                key={mark.value}
-                onClick={() => handleChange(null, mark.value)}
-                className={`text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full ${
-                  mark.value === value ? 'text-blue-600 bg-blue-200' : 'text-blue-200'
-                }`}
-              >
-                {mark.label}
-              </button>
-            ))}
+          <div className="w-full">
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value={value}
+              onChange={(e) => handleChange(null, parseInt(e.target.value))}
+              className="slider"
+            />
+            <div className="flex justify-between">
+              {marks.map((mark) => (
+                <button
+                  key={mark.value}
+                  onClick={() => handleChange(null, mark.value)}
+                  className={`text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full ${
+                    mark.value === value ? 'text-blue-600 bg-blue-200' : 'text-blue-200'
+                  }`}
+                >
+                  {mark.label}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
         <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200">
