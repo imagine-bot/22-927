@@ -33,19 +33,6 @@ export default function DaySlider() {
               onChange={(e) => handleChange(null, parseInt(e.target.value))}
               className="slider"
             />
-            <div className="flex justify-between">
-              {marks.map((mark) => (
-                <button
-                  key={mark.value}
-                  onClick={() => handleChange(null, mark.value)}
-                  className={`text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full ${
-                    mark.value === value ? 'text-blue-600 bg-blue-200' : 'text-blue-200'
-                  }`}
-                >
-                  {mark.label}
-                </button>
-              ))}
-            </div>
           </div>
         </div>
         <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200">
